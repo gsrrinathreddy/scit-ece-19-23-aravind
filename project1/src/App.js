@@ -3,6 +3,7 @@ import './App.css';
 import Navbar from './components/Navbar';
 import {BrowserRouter,Routes,Route} from 'react-router-dom';
 import Aboutus from './pages/Aboutus';
+import Certifications from './pages/Certifications';
 import Experience from './pages/Experience';
 import Hobbies from './pages/Hobbies';
 import Qualifications from './pages/Qualifications';
@@ -16,6 +17,7 @@ function App() {
            <Navbar/>
         <Routes>
          <Route path="Aboutus" element={<Aboutus/>}/>
+         <Route path="Certifications" element={<Certifications/>}/>
          <Route path="Experience" element={<Experience/>}/>
          <Route path="Hobbies" element={<Hobbies/>}/>
          <Route path="Qualifications" element={<Qualifications/>}/>
