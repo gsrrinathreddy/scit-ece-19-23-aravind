@@ -1,5 +1,4 @@
 
-
 import * as React from 'react';
 import ImageList from '@mui/material/ImageList';
 import ImageListItem from '@mui/material/ImageListItem';
@@ -7,8 +6,28 @@ import ImageListItemBar from '@mui/material/ImageListItemBar';
 import ListSubheader from '@mui/material/ListSubheader';
 import IconButton from '@mui/material/IconButton';
 import InfoIcon from '@mui/icons-material/Info';
+import axios from 'axios';
+import {useState,useEffect} from 'react';
+import {CircularProgress,Box} from '@mui/material';
+
+
 
 export default function Hobbies() {
+  let [loader,setLoader]= useState(true);
+    let [Hobbies, setHobbies]=useState(null);
+
+    const getHobbiesData = async () => axios.get('http://localhost:8000/Hobbies')
+                                                    .then(res=>{
+                                                        setHobbies(res.data)
+                                                        setLoader(false)
+                                                    }).Catch(err => console.log(err))
+
+            useEffect(()=>{
+                getHobbiesData();
+
+            },[])
+        console.log("Hobbies",Hobbies)
+
   return (
     <ImageList sx={{ width: 500, height: 450 }}>
       <ImageListItem key="Subheader" cols={2}>
@@ -42,27 +61,74 @@ export default function Hobbies() {
 
 const itemData = [
   {
-    img: 'https://imageio.forbes.com/specials-images/imageserve/750037840/960x0.jpg?format=jpg&width=960',
-    title: 'Litening music',
+    img: 'https://images.unsplash.com/photo-1551963831-b3b1ca40c98e',
+    title: 'Breakfast',
     
     rows: 2,
     cols: 2,
     featured: true,
   },
   {
-    img: 'http://giwaconnect.com/giwa-talk/wp-content/uploads/2021/02/Solo-Travel-in-Nature-acbfea52bfaf.jpg',
-    title: 'travelling',
+    img: 'https://images.unsplash.com/photo-1551782450-a2132b4ba21d',
+    title: 'Burger',
     
   },
   {
-    img: 'https://images.hindustantimes.com/img/2022/10/08/1600x900/IMG-20221008-WA0024_1665245049715_1665245054705_1665245054705.jpg',
-    title: 'playing kabaddi',
+    img: 'https://images.unsplash.com/photo-1522770179533-24471fcdba45',
+    title: 'Camera',
     
   },
   {
-    img: 'https://pbi.uii.ac.id/wp-content/uploads/2022/03/Five-Reasons-Why-Watching-Movies-Is-Beneficial-to-Our-Personal-Development.jpg',
-    title: 'watching movies',
+    img: 'https://images.unsplash.com/photo-1444418776041-9c7e33cc5a9c',
+    title: 'Coffee',
     
+    cols: 2,
+  },
+  {
+    img: 'https://images.unsplash.com/photo-1533827432537-70133748f5c8',
+    title: 'Hats',
     
+    cols: 2,
+  },
+  {
+    img: 'https://images.unsplash.com/photo-1558642452-9d2a7deb7f62',
+    title: 'Honey',
+    
+    rows: 2,
+    cols: 2,
+    featured: true,
+  },
+  {
+    img: 'https://images.unsplash.com/photo-1516802273409-68526ee1bdd6',
+    title: 'Basketball',
+    
+  },
+  {
+    img: 'https://images.unsplash.com/photo-1518756131217-31eb79b20e8f',
+    title: 'Fern',
+    
+  },
+  {
+    img: 'https://images.unsplash.com/photo-1597645587822-e99fa5d45d25',
+    title: 'Mushrooms',
+    
+    rows: 2,
+    cols: 2,
+  },
+  {
+    img: 'https://images.unsplash.com/photo-1567306301408-9b74779a11af',
+    title: 'Tomato basil',
+    
+  },
+  {
+    img: 'https://images.unsplash.com/photo-1471357674240-e1a485acb3e1',
+    title: 'Sea star',
+    
+  },
+  {
+    img: 'https://images.unsplash.com/photo-1589118949245-7d38baf380d6',
+    title: 'Bike',
+  
+    cols: 2,
   },
 ];

@@ -6,8 +6,30 @@ import ListItemText from '@mui/material/ListItemText';
 import ListItemAvatar from '@mui/material/ListItemAvatar';
 import Avatar from '@mui/material/Avatar';
 import Typography from '@mui/material/Typography';
+import axios from 'axios';
+import {useState,useEffect} from 'react';
+import {CircularProgress,Box} from '@mui/material';
+
+
+
+
+
 
 export default function Qualifications() {
+  let [loader,setLoader]= useState(true);
+    let [Qualifications, setQualifications]=useState(null);
+
+    const getQualificationsData = async () => axios.get('http://localhost:8000/Qualifications')
+                                                    .then(res=>{
+                                                        setQualifications(res.data)
+                                                        setLoader(false)
+                                                    }).Catch(err => console.log(err))
+
+            useEffect(()=>{
+                getQualificationsData();
+
+            },[])
+        console.log("Qualifications",Qualifications)
   return (
     <List sx={{ width: '100%', maxWidth: 360, bgcolor: 'background.paper', p: 3}}>
       <h1 className='mode'>Qualifications</h1>
