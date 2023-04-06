@@ -6,19 +6,19 @@ import {CircularProgress,Box} from '@mui/material';
 
 export default function Aboutus(){
     let [loader,setLoader]= useState(true);
-    let [Aboutme, setAboutme]=useState(null);
+    let [Aboutus, setAboutus]=useState(null);
 
-    const getAboutMeData = async () => axios.get('http://localhost:8000/Aboutme')
+    const getAboutusData = async () => axios.get('http://localhost:8000/Aboutus')
                                                     .then(res=>{
-                                                        setAboutme(res.data)
+                                                        setAboutus(res.data)
                                                         setLoader(false)
                                                     }).Catch(err => console.log(err))
 
             useEffect(()=>{
-                getAboutMeData();
+                getAboutusData();
 
             },[])
-        console.log("Aboutme",Aboutme)
+        console.log("Aboutus",Aboutus)
 
     return(
         <>

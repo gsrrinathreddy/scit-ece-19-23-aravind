@@ -14,7 +14,7 @@ import MenuItem from '@mui/material/MenuItem';
 import AdbIcon from '@mui/icons-material/Adb';
 import { Link } from 'react-router-dom';
 
-const pages = ['Aboutus', 'Qualifications', 'Hobbies','Experience','Skills',"Certifications"];
+const pages = ['Aboutus', 'Qualifications', 'Hobbies','Projects','Experience','Skills','Certifications'];
 const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
 
 function Navbar() {

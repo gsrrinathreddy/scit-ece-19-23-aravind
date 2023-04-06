@@ -6,29 +6,24 @@ import ListItemText from '@mui/material/ListItemText';
 import ListItemAvatar from '@mui/material/ListItemAvatar';
 import Avatar from '@mui/material/Avatar';
 import Typography from '@mui/material/Typography';
-import axios from 'axios';
 import {useState,useEffect} from 'react';
-import {CircularProgress,Box} from '@mui/material';
+import axios from 'axios';
 
 
+export default function Qualifications(){
+const [loader,setLoader] = useState(true);
+    const [qualifications,setQualifications] = useState(null);
 
-
-
-
-export default function Qualifications() {
-  let [loader,setLoader]= useState(true);
-    let [Qualifications, setQualifications]=useState(null);
-
-    const getQualificationsData = async () => axios.get('http://localhost:8000/Qualifications')
-                                                    .then(res=>{
-                                                        setQualifications(res.data)
-                                                        setLoader(false)
-                                                    }).Catch(err => console.log(err))
-
-            useEffect(()=>{
-                getQualificationsData();
-
-            },[])
+    const connectToServer = async  () => axios.get('http://localhost:8000/Qualifications')
+                                            .then(res=>{
+                                        
+                                                console.log(res.data);
+                                                setQualifications(res.data);
+                                                setLoader(false)
+                                            }).catch(err=>console.log(err))
+useEffect(()=>{
+   connectToServer();
+},[])
         console.log("Qualifications",Qualifications)
   return (
     <List sx={{ width: '100%', maxWidth: 360, bgcolor: 'background.paper', p: 3}}>
